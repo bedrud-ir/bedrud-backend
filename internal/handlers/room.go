@@ -36,6 +36,7 @@ type RoomResponse struct {
 	MaxParticipants int                 `json:"maxParticipants"`
 	ExpiresAt       time.Time           `json:"expiresAt"`
 	Settings        models.RoomSettings `json:"settings"`
+	LiveKitHost     string              `json:"livekitHost,omitempty"`
 }
 
 // AdminRoomResponse represents the detailed room information for admins
@@ -200,6 +201,7 @@ func (h *RoomHandler) JoinRoom(c *fiber.Ctx) error {
 		MaxParticipants: room.MaxParticipants,
 		ExpiresAt:       room.ExpiresAt,
 		Settings:        room.Settings,
+		LiveKitHost:     h.livekitHost,
 	})
 }
 
